@@ -8,7 +8,7 @@ const mercadopago = require("mercadopago");
 // Agrega credenciales
 mercadopago.configure({
   access_token:
-    "APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398",
+    "TEST-290701534392819-092401-381de3c84fb7cc1f6fb78bb0b56687b6-350651466",
 });
 
 // Settings
