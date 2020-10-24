@@ -1,6 +1,7 @@
 var express = require("express");
 var exphbs = require("express-handlebars");
 var app = express();
+var cors = require("cors");
 const mercadopago = require("mercadopago");
 
 // Int
@@ -48,6 +49,8 @@ app.get("/detail", function (req, res) {
       console.log(error);
     });
 });
+
+app.use(cors());
 
 app.use(express.static("assets"));
 
