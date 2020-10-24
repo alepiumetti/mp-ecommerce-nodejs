@@ -30,6 +30,11 @@ app.get("/pending", function (req, res) {
   res.render("pending");
 });
 
+app.post("/notifications", function (req, res) {
+  alert("res: ", res);
+  alert("rep: ", rep);
+});
+
 app.get("/detail", function (req, res) {
   mercadopago.configure({
     access_token:
