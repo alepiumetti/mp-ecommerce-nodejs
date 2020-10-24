@@ -14,6 +14,8 @@ mercadopago.configure({
 
 // Settings
 
+app.use(cors());
+
 app.engine("handlebars", exphbs());
 app.set("view engine", "handlebars");
 
@@ -49,8 +51,6 @@ app.get("/detail", function (req, res) {
       console.log(error);
     });
 });
-
-app.use(cors());
 
 app.use(express.static("assets"));
 
