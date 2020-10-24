@@ -18,6 +18,18 @@ app.get("/", function (req, res) {
   res.render("home", { global: global });
 });
 
+app.get("/success", function (req, res) {
+  res.render("success");
+});
+
+app.get("/failure", function (req, res) {
+  res.render("failure");
+});
+
+app.get("/pending", function (req, res) {
+  res.render("pending");
+});
+
 app.get("/detail", function (req, res) {
   mercadopago.configure({
     access_token:
@@ -33,6 +45,12 @@ app.get("/detail", function (req, res) {
         currency_id: "ARS",
       },
     ],
+    back_urls: {
+      success: "alepiumetti-mp-commerce-nodejs.herokuapp.com/success",
+      failure: "alepiumetti-mp-commerce-nodejs.herokuapp.com/failure",
+      pending: "alepiumetti-mp-commerce-nodejs.herokuapp.com/pending",
+    },
+    auto_return: "approved",
   };
 
   mercadopago.preferences
