@@ -40,6 +40,8 @@ app.get("/detail", function (req, res) {
     items: [
       {
         title: req.query.title,
+        description: "Dispositivo móvil de Tienda e-commerce",
+        img: req.query.img,
         unit_price: parseInt(req.query.price),
         quantity: parseInt(req.query.unit),
         currency_id: "ARS",
@@ -60,7 +62,7 @@ app.get("/detail", function (req, res) {
       res.render("detail", {
         id: response.body.id,
         query: req.query,
-        link: response.body.sandbox_init_point,
+        link: response.body.init_point,
       });
     })
     .catch(function (error) {
