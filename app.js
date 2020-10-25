@@ -72,7 +72,7 @@ app.post("/detail", function (req, res) {
       adress: {
         street_name: req.body.street_name,
         street_number: req.body.street_number,
-        zip_code: zip_code,
+        zip_code: req.body.zip_code,
       },
     },
     payment_methods: {
