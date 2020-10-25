@@ -43,8 +43,8 @@
                     </div>
                 </div>
                 <div class="as-accessories-results  as-search-desktop">
-                    <div class="width:60%">
-                        <div class="as-producttile-tilehero with-paddlenav " style="float:left;">
+                    <div style="width:100%;display:flex">
+                        <div class="as-producttile-tilehero with-paddlenav " style="float:left;width:50%">
                             <div class="as-dummy-container as-dummy-img">
 
                                 <img src="./assets/wireless-headphones" class="ir ir item-image as-producttile-image  "
@@ -66,7 +66,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="as-producttile-info" style="float:left;min-height: 168px;">
+                        <div class="as-producttile-info" style="min-height: 168px; width:50%">
                             <div class="as-producttile-titlepricewraper" style="min-height: 128px;">
                                 <div class="as-producttile-title">
                                     <h3 class="as-producttile-name">
@@ -82,12 +82,44 @@
                                 <h3>
                                     {{ query.unit }}
                                 </h3>
+                                <form method="post" action="/detail">
+                                    <!-- acá ponés los datos del producto para mandar -->
+                                    <input type="hidden" name="img" value={{query.img}}>
+                                    <input type="hidden" name="title" value={{query.title}}>
+                                    <input type="hidden" name="price" value={{query.price}}>
+                                    <input type="hidden" name="unit" value={{query.unit}}>
+
+                                    <!-- acá poné el contenido visible -->
+                                    <label for="name">Nombre: </label>
+                                    <input type="text" name="name" id="name">
+                                    <label for="surname">Apellido: </label>
+                                    <input type="text" name="surname" id="surname">
+                                    <br />
+                                    <label for="email">Email:</label>
+                                    <input type="email" name="email" id="email">
+                                    <br />
+                                    <label for="area_code">Teléfono:</label>
+                                    <input type="number" size="5" maxlength="5" name="area_code" id="area_code">
+                                    -
+                                    <input type="tel" name="phone_number" id="phone_number" maxlength="10">
+                                    <br />
+                                    <label for="street_name">Dirección: </label>
+                                    <input type="text" name="street_name" id="street_name">
+                                    <label for="stree_number">Número: </label>
+                                    <input type="number" name="street_number" id="street_number">
+                                    <br />
+                                    <label for="zip_code">Código postal: </label>
+                                    <input type="number" name="zip_code" id="zip_code">
+                                    <br />
+                                    <button type="submit" class="mercadopago-button">Pagar</button>
+                                </form>
                             </div>
-                            <a href={{link}}> <button type="submit" class="mercadopago-button" formmethod="post">Pagar
-                                    la compra</button></a>
-                            <!-- <script src="https://www.mercadopago.com.mx/integrations/v1/web-payment-checkout.js"
-                                data-preference-id='{{ id }}'>
-                                </script> -->
+
+
+                            <!--<a href={{link}}> <button type="submit" class="mercadopago-button" formmethod="post">Pagar
+                                    la compra</button></a>-->
+
+
                         </div>
                     </div>
                 </div>

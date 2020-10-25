@@ -2,6 +2,7 @@ var express = require("express");
 var exphbs = require("express-handlebars");
 var app = express();
 const mercadopago = require("mercadopago");
+var bodyParser = require("body-parser");
 
 // Int
 
@@ -14,20 +15,12 @@ app.set("view engine", "handlebars");
 
 //Router
 
+app.use(bodyParser.urlencoded());
+app.use(bodyParser.json());
+
 app.get("/", function (req, res) {
   res.render("home", { global: global });
 });
-
-// http://alepiumetti-mp-commerce-nodejs.herokuapp.com/success?
-// collection_id=12063062643&
-// collection_status=approved&
-// payment_id=12063062643&
-// status=approved&
-// external_reference=null&
-// payment_type=credit_card&
-// merchant_order_id=1910872933&
-// preference_id=469485398-8129c4c8-3f27-4955-904a-fefa2c29fa04&
-// site_id=MLA&processing_mode=aggregator&merchant_account_id=null
 
 app.get("/success", function (req, res) {
   res.render("success", {
@@ -47,7 +40,9 @@ app.get("/pending", function (req, res) {
 
 app.post("/notifications", function (req, res) {});
 
-app.get("/detail", function (req, res) {
+app.post("/detail", function (req, res) {
+  console.log(req.body);
+
   mercadopago.configure({
     access_token:
       "APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398",
@@ -58,26 +53,26 @@ app.get("/detail", function (req, res) {
     items: [
       {
         id: "1234",
-        title: req.query.title,
+        title: req.body.title,
         description: "Dispositivo móvil de Tienda e-commerce",
-        picture_url: req.query.img,
-        unit_price: parseInt(req.query.price),
-        quantity: parseInt(req.query.unit),
+        picture_url: req.body.img,
+        unit_price: parseInt(req.body.price),
+        quantity: parseInt(req.body.unit),
         currency_id: "ARS",
       },
     ],
     payer: {
-      name: "Lalo",
-      surname: "Landa",
-      email: "test_user_63274575@testuser.com",
+      name: req.body.name,
+      surname: req.body.surname,
+      email: req.body.email,
       phome: {
-        area_code: "11",
-        number: "22223333",
+        area_code: req.body.area_code,
+        number: req.body.phone_number,
       },
       adress: {
-        street_name: "False",
-        street_number: "123",
-        zip_code: "1111",
+        street_name: req.body.street_name,
+        street_number: req.body.street_number,
+        zip_code: zip_code,
       },
     },
     payment_methods: {
@@ -108,15 +103,15 @@ app.get("/detail", function (req, res) {
     .create(preference)
     .then(function (response) {
       console.log(response.body);
-      res.render("detail", {
-        id: response.body.id,
-        query: req.query,
-        link: response.body.init_point,
-      });
+      res.redirect(response.body.init_point);
     })
     .catch(function (error) {
       console.log(error);
     });
+});
+
+app.get("/detail", (req, res) => {
+  res.render("detail", { query: req.query });
 });
 
 app.use(express.static("assets"));
