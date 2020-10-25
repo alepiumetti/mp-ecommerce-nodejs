@@ -24,7 +24,7 @@ app.get("/", function (req, res) {
 
 app.get("/success", function (req, res) {
   res.render("success", {
-    payment_id: req.query.payment_id,
+    payment_id: req.query.collection_id,
     external_reference: req.query.external_reference,
     payment_type: req.query.payment_type,
   });
