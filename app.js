@@ -39,7 +39,7 @@ app.get("/pending", function (req, res) {
 });
 
 app.post("/notifications", function (req, res) {
-  console.log("req.body", req.body);
+  console.log("Notificación: ", JSON.parse(req.body));
   res.end();
 });
 
