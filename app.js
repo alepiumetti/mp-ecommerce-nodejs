@@ -30,15 +30,15 @@ app.get("/", function (req, res) {
 // site_id=MLA&processing_mode=aggregator&merchant_account_id=null
 
 app.get("/success", function (req, res) {
-  res.render("success");
-});
-
-app.get("/failure", function (req, res) {
-  res.render("failure", {
+  res.render("success", {
     payment_id: req.query.payment_id,
     external_reference: req.query.external_reference,
     payment_type: req.query.payment_type,
   });
+});
+
+app.get("/failure", function (req, res) {
+  res.render("failure");
 });
 
 app.get("/pending", function (req, res) {
