@@ -38,7 +38,9 @@ app.get("/pending", function (req, res) {
   res.render("pending");
 });
 
-app.post("/notifications", function (req, res) {});
+app.post("/notifications", function (req, res) {
+  console.log("req.body", req.body);
+});
 
 app.post("/detail", function (req, res) {
   console.log(req.body);
