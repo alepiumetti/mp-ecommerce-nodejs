@@ -39,7 +39,7 @@ app.get("/pending", function (req, res) {
 });
 
 app.post("/notifications", function (req, res) {
-  console.log("Notificación: ", JSON.stringify(req.body));
+  console.log("Notificación1: ", JSON.stringify(req.body));
   res.end();
 });
 
@@ -105,7 +105,7 @@ app.post("/detail", function (req, res) {
   mercadopago.preferences
     .create(preference)
     .then(function (response) {
-      console.log(response.body);
+      console.log("ResponseBody1", response.body);
       res.redirect(response.body.init_point);
     })
     .catch(function (error) {
