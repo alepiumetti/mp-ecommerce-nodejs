@@ -40,6 +40,7 @@ app.get("/pending", function (req, res) {
 
 app.post("/notifications", function (req, res) {
   console.log("req.body", req.body);
+  res.end();
 });
 
 app.post("/detail", function (req, res) {
