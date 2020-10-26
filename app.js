@@ -77,7 +77,7 @@ app.post("/detail", function (req, res) {
       },
       address: {
         street_name: req.body.street_name,
-        street_number: req.body.street_number,
+        street_number: parseInt(req.body.street_number),
         zip_code: req.body.zip_code,
       },
     },
