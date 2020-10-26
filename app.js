@@ -73,7 +73,7 @@ app.post("/detail", function (req, res) {
         area_code: req.body.area_code,
         number: parseInt(req.body.phone_number),
       },
-      adress: {
+      address: {
         street_name: req.body.street_name,
         street_number: req.body.street_number,
         zip_code: req.body.zip_code,
