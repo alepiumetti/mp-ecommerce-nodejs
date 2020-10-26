@@ -68,7 +68,7 @@ app.post("/detail", function (req, res) {
       name: req.body.name,
       surname: req.body.surname,
       email: req.body.email,
-      phome: {
+      phone: {
         area_code: req.body.area_code,
         number: req.body.phone_number,
       },
@@ -86,7 +86,7 @@ app.post("/detail", function (req, res) {
       ],
       excluded_payment_types: [
         {
-          id: "redlink",
+          id: "atm",
         },
       ],
       installments: 6,
