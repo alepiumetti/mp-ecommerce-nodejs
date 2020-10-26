@@ -70,12 +70,12 @@ app.post("/detail", function (req, res) {
       surname: req.body.surname,
       email: req.body.email,
       phone: {
-        area_code: parseInt(req.body.area_code),
+        area_code: req.body.area_code,
         number: parseInt(req.body.phone_number),
       },
       adress: {
         street_name: req.body.street_name,
-        street_number: parseInt(req.body.street_number),
+        street_number: req.body.street_number,
         zip_code: req.body.zip_code,
       },
     },
