@@ -59,7 +59,7 @@ app.post("/detail", function (req, res) {
         id: "1234",
         title: req.body.title,
         description: "Dispositivo móvil de Tienda e-commerce",
-        picture_url: ("assets", path.join(__dirname, req.body.img)),
+        picture_url: ("/assets", path.join(__dirname, req.body.img)),
         unit_price: parseInt(req.body.price),
         quantity: parseInt(req.body.unit),
         currency_id: "ARS",
