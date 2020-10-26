@@ -59,9 +59,10 @@ app.post("/detail", function (req, res) {
         id: "1234",
         title: req.body.title,
         description: "Dispositivo móvil de Tienda e-commerce",
-        picture_url:
-          ("http://alepiumetti-mp-commerce-nodejs.herokuapp.com",
-          path.join(__dirname, req.body.img)),
+        picture_url: path.join(
+          "http://alepiumetti-mp-commerce-nodejs.herokuapp.com",
+          req.body.img
+        ),
         unit_price: parseInt(req.body.price),
         quantity: parseInt(req.body.unit),
         currency_id: "ARS",
