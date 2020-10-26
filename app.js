@@ -3,6 +3,7 @@ var exphbs = require("express-handlebars");
 var app = express();
 const mercadopago = require("mercadopago");
 var bodyParser = require("body-parser");
+const path = require("path");
 
 // Int
 
@@ -119,6 +120,6 @@ app.get("/detail", (req, res) => {
 
 app.use(express.static("assets"));
 
-app.use("/assets", express.static(__dirname + "/assets"));
+app.use(express.static(path.join(__dirname, "/assets")));
 
 app.listen(process.env.PORT || 3000);
