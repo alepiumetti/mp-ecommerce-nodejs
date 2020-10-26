@@ -120,6 +120,6 @@ app.get("/detail", (req, res) => {
 
 app.use(express.static("assets"));
 
-app.use(express.static(path.join(__dirname, "assets")));
+app.use("/assets", express.static(path.join(__dirname, "/assets")));
 
 app.listen(process.env.PORT || 3000);
